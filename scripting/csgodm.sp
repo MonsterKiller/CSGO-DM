@@ -6,6 +6,7 @@
 
 #define ITEM_MAX_PRIMARY 25
 #define ITEM_MAX_SECONDARY 10
+#define CSGODM_VERSION "1.0"
 
 new Handle:cvar_respawntime;
 new g_Ammo = -1;
@@ -32,7 +33,7 @@ public Plugin:myinfo =
 	name = "CS:GO DeathMatch",
 	author = "Monster Killer",
 	description = "DeathMatch for CS:GO",
-	version = "1.0",
+	version = CSGODM_VERSION,
 	url = "http://MonsterProjects.org"
 };
 
@@ -45,6 +46,7 @@ public OnClientConnected(client)
 
 public OnPluginStart()
 {
+	CreateConVar("csgodm_version", CSGODM_VERSION, "Current version of CSGO-DM", FCVAR_PLUGIN|FCVAR_REPLICATED|FCVAR_SPONLY|FCVAR_NOTIFY);
 	cvar_respawntime = CreateConVar("csgodm_respawntime", "1.0", "The time to wait before respawning a player");
 	
 	Items_Load();
